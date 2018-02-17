@@ -2,7 +2,7 @@
 
 Clone this repository
 ```
-git clone https://github.com/d-paulus/IATIHDXAPINepal.git
+git clone https://github.com/klkris/iati-test.git
 ```
 
 Create project directory
