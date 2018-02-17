@@ -5,10 +5,9 @@ Clone this repository
 git clone https://github.com/klkris/iati-test.git
 ```
 
-Create project directory
+Cd to project directory
 ```
-mkdir iatihdxapinepal
-cd iatihdxapinepal
+cd iati-test
 ```
 
 Install virtual env and activate 
