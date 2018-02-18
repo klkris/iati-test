@@ -17,7 +17,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-Upgrade pip if needed
+Upgrade pip
 ```
 pip install --upgrade pip
 ```
