@@ -50,9 +50,13 @@ flask db migrate
 flask db upgrade
 ```
 
-Run the project
+Start the server
 ```
-python3 -m app.update
+flask run
+```
+Update Organisation table by fetching records from IATI datastore API
+```
+http://localhost:5000/updateOrganisation
 ```
 
 Connect to database to verify
