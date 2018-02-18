@@ -24,3 +24,6 @@ class Organisation(db.Model):
 class OrganisationSchema(ma.Schema):
 	class Meta:
 		fields = ('iatiId', 'title', 'reportingOrg', 'telephone', 'email', 'website', 'last_updated')
+
+org_schema = OrganisationSchema()
+orgs_schema = OrganisationSchema(many=True)
