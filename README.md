@@ -64,3 +64,12 @@ Connect to database to verify
 sudo psql -d iatihdxapi -U iatihdxapi -W
 select * from organisation;
 ```
+Get all organisations present in the database
+```
+http://localhost:5000/orgs
+```
+
+Get organisation by passing id
+```
+http://localhost:5000/orgs/<id>
+```
