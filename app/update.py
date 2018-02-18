@@ -3,8 +3,11 @@ import json
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from .models import Organisation
+from .models import OrganisationSchema
+from .models import orgs_schema
 from app import app
 from app import db
+from flask import jsonify
 
 @app.route('/updateOrganisation')
 def updateOrganisation():
@@ -52,3 +55,14 @@ def updateOrganisation():
 			print(e)
 	db.session.commit()
 	return "Inserted " + str(insert_count) + " records and updated " + str(update_count) + " records"
+
+@app.route('/orgs')
+def getAllOrgs():
+	all_orgs = Organisation.query.all()
+	result = orgs_schema.dump(all_orgs)
+	return jsonify(result.data)
+
+@app.route('/orgs/<id>')
+def orgDetail(id):
+	org = Organisation.get(id)
+	return org_schema.jsonify(org)
