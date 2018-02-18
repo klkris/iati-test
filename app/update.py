@@ -10,7 +10,7 @@ from app import db
 def updateOrganisation():
 	insert_count = 0
 	update_count = 0
-	uri = 'http://datastore.iatistandard.org/api/1/access/activity.xml?recipient-country=NP&limit=1000'
+	uri = 'http://datastore.iatistandard.org/api/1/access/activity.xml?recipient-country=NP&stream=true'
 	response = requests.get(uri)
 	root = ET.fromstring(response.content)
 	for activities in root.findall('iati-activities/iati-activity'):
