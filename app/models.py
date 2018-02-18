@@ -1,4 +1,6 @@
 from app import db
+from app import app
+from marshmallow import Schema, fields
 
 class Organisation(db.Model):
 	iatiId = db.Column(db.String(2000), primary_key=True)
@@ -21,7 +23,7 @@ class Organisation(db.Model):
 		self.website = website
 		self.last_updated = last_updated
 
-class OrganisationSchema(ma.Schema):
+class OrganisationSchema(Schema):
 	class Meta:
 		fields = ('iatiId', 'title', 'reportingOrg', 'telephone', 'email', 'website', 'last_updated')
 
