@@ -5,6 +5,7 @@ from datetime import datetime
 from .models import Organisation
 from .models import OrganisationSchema
 from .models import orgs_schema
+from .models import org_schema
 from app import app
 from app import db
 from flask import jsonify
@@ -64,5 +65,6 @@ def getAllOrgs():
 
 @app.route('/orgs/<id>')
 def orgDetail(id):
-	org = Organisation.get(id)
-	return org_schema.jsonify(org)
+	org = Organisation.query.get(id)
+	result = org_schema.dump(org)
+	return jsonify(result.data)
