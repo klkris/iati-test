@@ -20,3 +20,7 @@ class Organisation(db.Model):
 		self.email = email
 		self.website = website
 		self.last_updated = last_updated
+
+class OrganisationSchema(ma.Schema):
+	class Meta:
+		fields = ('iatiId', 'title', 'reportingOrg', 'telephone', 'email', 'website', 'last_updated')
