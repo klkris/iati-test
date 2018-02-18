@@ -1,12 +1,15 @@
 import requests
 import json
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta
+from datetime import datetime
 from .models import Organisation
+from app import app
 from app import db
 
-#@app.route('/updateOrganisation')
+@app.route('/updateOrganisation')
 def updateOrganisation():
+	insert_count = 0
+	update_count = 0
 	uri = 'http://datastore.iatistandard.org/api/1/access/activity.xml?recipient-country=NP&limit=1000'
 	response = requests.get(uri)
 	root = ET.fromstring(response.content)
@@ -35,9 +38,10 @@ def updateOrganisation():
 					org.title = title
 					org.reportingOrg = reportingOrg
 					org.last_updated = datetime.now()
+					update_count += 1
 			else:
 				org = Organisation(iatiId, title, reportingOrg, "", "", "", datetime.now())
-			print(iatiId + ' date: ' + str(last_updated)) 
+				insert_count += 1
 			try:
 				org
 			except NameError:
@@ -47,7 +51,4 @@ def updateOrganisation():
 		except Exception as e:
 			print(e)
 	db.session.commit()
-
-if __name__ == "__main__":
-	updateOrganisation()
-
+	return "Inserted " + str(insert_count) + " records and updated " + str(update_count) + " records"
